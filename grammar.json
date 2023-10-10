@@ -1,0 +1,124 @@
+{
+    "fileTypes": [],
+    "injectionSelector": "L:source.js -comment -(string - meta.embedded), L:source.jsx -comment -(string - meta.embedded), L:source.js.jsx -comment -(string - meta.embedded), L:source.ts -comment -(string - meta.embedded), L:source.tsx -comment -(string - meta.embedded)",
+    "patterns": [
+        {
+            "begin": "(?i)(/)(?=(\\*\\s*\\b(?:divv)\\b\\s*\\*/)\\s*`)",
+            "beginCaptures": {
+                "1": {
+                    "name": "comment.block.ts"
+                }
+            },
+            "end": "(`)",
+            "endCaptures": {
+                "0": {
+                    "name": "string.js"
+                },
+                "1": {
+                    "name": "punctuation.definition.string.template.end.js"
+                }
+            },
+            "patterns": [
+                {
+                    "include": "#divv-interpolations"
+                }
+            ]
+        }
+    ],
+    "scopeName": "divv.tagged.syntax",
+    "repository": {
+        "divv-interpolations": {
+            "name": "string.js.divv.tagged.syntax",
+            "contentName": "string.template.js",
+            "begin": "(?i)(\\*\\s*\\b(divv)\\b\\s*\\*/)\\s*(`)",
+            "beginCaptures": {
+                "1": {
+                    "name": "comment.block.ts"
+                }
+            },
+            "end": "(?=`)",
+            "patterns": [
+                {
+                    "begin": "[<\\s/](?=for|if|else-if|else)",
+                    "end": "[=\\s>]",
+                    "contentName": "keyword.control.js"
+                },
+                {
+                    "begin": "\\s(?=@.+=)",
+                    "end": "(?==)",
+                    "contentName": "keyword.control.js"
+                },
+                {
+                    "begin": "(?<!\\\\)(?=@)",
+                    "end": "[^0-9a-zA-Z\\.\\!@\\[\\]]",
+                    "contentName": "entity.name.function.js"
+                },
+                {
+                    "begin": "(?=<!--)",
+                    "end": "(?<=-->)",
+                    "contentName": "constant.numeric.js"
+                },
+                {
+                    "begin": "(?<![<>])[\\s\\t]{0,}(?=//)",
+                    "end": "[\\n<>]",
+                    "contentName": "comment.js"
+                },
+                {
+                    "begin": ">[\\s\\t]{0,}(?=//.+<)",
+                    "end": "<",
+                    "contentName": "variable.js"
+                },
+                {
+                    "begin": "(?<=ref=)\"",
+                    "end": "\"",
+                    "contentName": "constant.numeric.js"
+                },
+                {
+                    "begin": "(?<=(if|@\\w+)=)\"",
+                    "end": "\"",
+                    "contentName": "variable.js"
+                },
+                {
+                    "begin": "(?<=for=\")(?=\\w+)",
+                    "end": "\\s",
+                    "contentName": "variable.other.constant.js"
+                },
+                {
+                    "begin": "(?<=for=\"\\w+\\s(in|of)\\s)(?=\\w+)",
+                    "end": "[\\s\"]",
+                    "contentName": "variable.js"
+                },
+                {
+                    "begin": "(?<=for=\"{)(?=[a-zA-Z0-9,\\s]+)",
+                    "end": "}",
+                    "contentName": "variable.other.constant.js"
+                },   
+                {
+                    "begin": "(?<=for=\"{.+}\\s(in|of)\\s)(?=\\w+)",
+                    "end": "[\\s\"]",
+                    "contentName": "variable.js"
+                },     
+                {
+                    "begin": "(?<=<if\\s)(?=\\w+)",
+                    "end": "[\\s>]",
+                    "contentName": "variable.js"
+                },          
+                {
+                    "begin": "(?<=<for\\s)(?=\\w+)",
+                    "end": "[\\s>]",
+                    "contentName": "variable.other.constant.js"
+                },
+                {
+                    "begin": "(?<=<for\\s\\w+\\s(in|of)\\s)(?=\\w+)",
+                    "end": ">",
+                    "contentName": "variable.other.property.js"
+                },
+                {
+                    "begin": "(?<![<>])[\\s\\t]{0,}(?=/\\*)",
+                    "end": "(?<=\\*/)",
+                    "contentName": "comment.js"
+                }
+            ]
+        }
+    }
+}

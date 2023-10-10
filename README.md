@@ -1,2 +1,6 @@
 # divv-vscode
-Syntax highlighting for /* divv */-prefixed template strings
+Syntax highlighting for _/* divv */_-prefixed template strings.
+
+![example](images/example.png)
+
+[npm install divv](https://github.com/frdnrdb/divv)

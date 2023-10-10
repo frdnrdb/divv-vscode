@@ -1,0 +1,56 @@
+{
+	"name": "divv-vscode",
+	"displayName": "divv syntax highlighting",
+	"description": "syntax highlighting for /* divv */-prefixed template strings",
+	"version": "0.0.1",
+	"publisher": "frdnrdb",
+	"author": {
+    "name": "frdnrdb"
+  },
+	"icon": "images/icon.png",
+	"galleryBanner": {
+		"color": "#cabbed",
+		"theme": "dark"
+	},
+	"homepage": "https://github.com/frdnrdb/divv-vscode/blob/main/README.md",
+	"repository": {
+		"url": "https://github.com/frdnrdb/divv-vscode.git"
+	},
+	"bugs": {
+		"url": "https://github.com/frdnrdb/divv-vscode/issues"
+	},
+	"engines": {
+		"vscode": "^1.20.0"
+	},
+	"categories": [
+		"Programming Languages"
+	],
+	"keywords": [
+		"javascript",
+		"typescript",
+		"tagged",
+		"template",
+		"embedded"
+	],
+	"contributes": {
+		"grammars": [
+			{
+				"injectTo": [
+					"source.js",
+					"source.js.jsx",
+					"source.jsx",
+					"source.ts",
+					"source.tsx",
+					"text.html.basic",
+					"text.html.derivative",
+					"text.html.markdown"
+				],
+				"scopeName": "divv.tagged.syntax",
+				"path": "./grammar.json",
+				"embeddedLanguages": {
+					"meta.embedded.block.js": "javascript"
+				}
+			}
+		]
+	}
+}
